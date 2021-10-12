@@ -1,0 +1,28 @@
+{
+  
+   
+ 
+  "pages":[
+    "pages/index/index",
+    "pages/cut/cut",
+    
+   
+    
+   
+    
+   
+    
+    "pages/photoCut/photoCut"
+
+  ],
+  "cloud":true,
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "民大专属头像",
+    "navigationBarTextStyle":"black"
+  },
+ 
+  "sitemapLocation": "sitemap.json",
+  "servicemarket": true
+}

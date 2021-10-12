@@ -1,0 +1,6 @@
+
+{"usingComponents": {
+  "image-cropper": "../../components/src/image-cropper"
+},
+"navigationBarTitleText": "裁剪图片",
+"disableScroll": true}

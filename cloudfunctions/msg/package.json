@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "openapi": [
+      "security.imgSecCheck"
+    ]
+  },
+  "dependencies": {
+    "wx-server-sdk": "^2.3.2"
+  }
+}

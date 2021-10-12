@@ -1,0 +1,32 @@
+page{
+  box-sizing: border-box;
+ background: #050505c5
+}
+.show{
+  position: absolute;
+  overflow: hidden;
+  top: 40%;
+  transform: translateY(-50%);
+  background:#F0FFFF;
+}
+.img{
+  overflow: scroll;
+}
+
+.cut{
+  width: 100vw;
+  height: 100vw;
+  top:50%;
+  transform: translateY(-50%);
+  position: absolute;
+  border: 1px dashed rgba(255, 255, 255, 0.856);
+}
+.bottom{
+  position: absolute;
+  width: 100vw;
+  bottom: 0;
+  
+}
+.button{
+  margin-top: 10rpx;
+}

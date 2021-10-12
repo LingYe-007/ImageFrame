@@ -1,0 +1,22 @@
+<view wx:if="{{crop_pic==''}}" class='show' bindtouchstart='start' bindtouchmove='move' style='width:{{screenW}}px;height:{{screenW}}px'>
+<scroll-view scroll-x='true' scroll-y='true' style='height:{{screenW}}px' bindscroll='scroll'>
+  <image src='{{img}}' style=' width:{{width}}px; height:{{height}}px'></image>
+  </scroll-view>
+  <view class='cut' style='width:{{cut_}}px; height:{{cut_}}px'></view>
+ 
+</view>
+<block wx:else >
+<image src='{{crop_pic}}' class='show' style='width:{{width}}px; height:{{height}}px; '></image> 
+</block>
+<view>
+<canvas  canvas-id='canvas' style=' width:{{width}}px; height:{{height}}px;positon:absolute;bottom:1000px'></canvas>
+</view>
+
+
+<view class='bottom'>
+<button wx:if="{{img==''}}" bindtap='choose' type='primary'>上传图片</button>
+<view  style="display:flex;" wx:else>
+  <button bindtap='crop' type='primary' >确定</button>
+<button bindtap='clear' type='warn' >取消</button>
+</view>
+</view>

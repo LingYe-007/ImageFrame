@@ -1,0 +1,116 @@
+/**index.wxss**/
+.container {
+  background-image: url("https://ks3-cn-beijing.ksyuncs.com/lingye-space/70%E5%91%A8%E5%B9%B4%E5%A4%B4%E5%83%8F/back.jpg");
+  height: 92vh;
+  position: relative;
+  z-index: 800;
+  background-size: 100% 100%;
+
+}
+
+.about-banner {
+  width: 500rpx;
+  height: 500rpx;
+  border-radius: 5%;
+  border: 25rpx;
+  background: none;
+}
+
+.button1 {
+  border-radius: 50px;
+  font-weight: 400;
+  margin: 40rpx;
+  background-color: #ffffff;
+  border: 25rpx;
+  width: 150px;
+  height: 40px;
+  color: #BBB09C;
+  display: flex;
+  justify-content: center;
+  /*实现水平居中*/
+  align-items: center;
+  /*实现垂直居中*/
+
+}
+
+.dibu {
+  display: flex;
+  bottom: 0px;
+  height: 8vh;
+
+  margin: 0px;
+  padding: 0px;
+}
+
+.wenzi {
+  margin: 0px;
+  width: 25%;
+  border-style: solid;
+  border-color: #BBB09C;
+  border: 10rpx;
+  display: flex;
+  justify-content: center;
+  /*实现水平居中*/
+  align-items: center;
+  /*实现垂直居中*/
+
+
+
+
+
+}
+
+.button2 {
+  background-color: #9B8A62;
+  font-size: 16px;
+  padding: 0px;
+  border-radius: 0px;
+  width: 25%;
+  color: #ffffff;
+  align-items: center;
+  /*实现垂直居中*/
+  justify-content: center;
+  /*实现水平居中*/
+  font-family: 'Arial Negreta', 'Arial Normal', 'Arial', sans-serif;
+  font-weight: 800;
+  display: flex;
+}
+
+.hecheng {
+  width: 750rpx;
+  height: 250rpx;
+  z-index: 100;
+  position: absolute;
+  background-color: #ffffff;
+  bottom: 0px;
+}
+
+.box-sv {
+  width: 700 rpx;
+  height: 133 rpx;
+  white-space: nowrap;
+  margin: 3% auto;
+  top: 0px;
+}
+
+.hidden-canvas {
+  position: fixed;
+  bottom: -1000px;
+}
+
+@keyframes slideup {
+  from {
+    opacity: 0;
+    transform: translateY(40px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px)
+  }
+}
+
+.bg_color {
+
+  background-color: #F2E9D9;
+}

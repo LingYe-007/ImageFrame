@@ -1,0 +1,9 @@
+{
+ 
+  "usingComponents": {
+   
+  },
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "servicemarket": true
+}
