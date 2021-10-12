@@ -4,8 +4,11 @@
   height: 92vh;
   position: relative;
   z-index: 800;
-  background-size: 100% 100%;
-
+  background-size: cover;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  /* background-clip: border-box; */
+  /* background: center; */
 }
 
 .about-banner {
@@ -24,7 +27,7 @@
   border: 25rpx;
   width: 150px;
   height: 40px;
-  color: #BBB09C;
+  color: #925b59;
   display: flex;
   justify-content: center;
   /*实现水平居中*/
@@ -61,7 +64,7 @@
 }
 
 .button2 {
-  background-color: #9B8A62;
+  background-color: #925b59;
   font-size: 16px;
   padding: 0px;
   border-radius: 0px;

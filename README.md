@@ -10,3 +10,7 @@
 
 - [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
 
+### 改动
+
+因为 `珊瑚安全` 凉了,只能采用其他方案来对图片进行鉴权。调用小程序的imgSecCheck,同时把图片上传到云服务,来解决这个问题。
+
