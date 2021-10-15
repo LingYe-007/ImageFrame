@@ -1,11 +1,16 @@
 //index.js
 var app = getApp();
+wx.cloud.init({
+  env:"mindatouxiang-5g56l8c62275aca1",
+  traceUser:true
+})
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     //用户个人信息
+    hasUserInfo: false,
     userInfo: {
       cw: 300,
       ch: 200,
@@ -18,20 +23,22 @@ Page({
       scuecimage: "",
       buttonjinyong: true,
     },
+    hasUserInfo: false,
+    canIUseGetUserProfile: false,
     list: [],
     //民大70周年限定
     list1: [
       {
         id: -14,
-        Path: "https://ks3-cn-beijing.ksyuncs.com/lingye-space/asset/pic14.png",
+        Path: "http://lingye-space.ks3-cn-beijing.ksyuncs.com/70%E5%91%A8%E5%B9%B4%E5%A4%B4%E5%83%8F/70%E5%91%A8%E5%B9%B4%E9%99%90%E5%AE%9A/%E5%A4%B4%E5%83%8F111.png",
       },
       {
         id: -13,
-        Path: "https://ks3-cn-beijing.ksyuncs.com/lingye-space/asset/pic14.png",
+        Path: "http://lingye-space.ks3-cn-beijing.ksyuncs.com/70%E5%91%A8%E5%B9%B4%E5%A4%B4%E5%83%8F/70%E5%91%A8%E5%B9%B4%E9%99%90%E5%AE%9A/%E5%A4%B4%E5%83%8F122.png",
       },
       {
         id: -12,
-        Path: "https://ks3-cn-beijing.ksyuncs.com/lingye-space/asset/pic13.png",
+        Path: "http://lingye-space.ks3-cn-beijing.ksyuncs.com/70%E5%91%A8%E5%B9%B4%E5%A4%B4%E5%83%8F/70%E5%91%A8%E5%B9%B4%E9%99%90%E5%AE%9A/%E5%A4%B4%E5%83%8F133.png",
       },
       {
         id: -11,
@@ -332,16 +339,16 @@ Page({
    * 用户点击右上角分享
    */
 
-  getUserImg: function (e) {
-    var that = this;
-    wx.showLoading({
-      title: "获取中",
-    });
+  // getUserImg: function (e) {
+  //   var that = this;
+  //   wx.showLoading({
+  //     title: "获取中",
+  //   });
 
-    setTimeout(function () {
-      wx.hideLoading();
-    }, 100);
-  },
+  //   setTimeout(function () {
+  //     wx.hideLoading();
+  //   }, 100);
+  // },
 
   f2: function (event) {
     let that = this;
@@ -431,7 +438,7 @@ Page({
                           "您上传的图片存在违法违规信息，未通过云端AI审核！",
                         showCancel: false,
                       });
-                    }  else {
+                    } else {
                       wx.hideLoading();
                       wx.navigateTo({
                         url: "/pages/cut/cut?src=" + tempFile,
@@ -746,16 +753,23 @@ Page({
       // "userInfo.hechenghouxianshi": true,
     });
   },
-
+  onLoad() {
+    if (wx.getUserProfile) {
+      this.setData({
+        canIUseGetUserProfile: true
+      })
+    }
+  },
   onLoad: function () {
     // 查看是否授权
     wx.getSetting({
       success(res) {
         if (res.authSetting["scope.userInfo"]) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
+          wx.getUserProfile({
+            desc: 'desc',
             success: function (res) {
-              console.log(res.userInfo);
+              console.log(res);
             },
           });
         }
@@ -767,51 +781,58 @@ Page({
       menus: ["shareAppMessage", "shareTimeline"],
     });
   },
-  bindGetUserInfo(e) {
+  
+  getUserProfile(e) {
+    console.log(e)
     wx.showLoading({
       title: "获取中",
     });
-
-    setTimeout(function () {
-      wx.hideLoading();
-    }, 100);
-    var aaa;
-    var that = this;
-    if (that.data.userInfo.hechenghouxianshi == false) {
-      that.setData({
-        "userInfo.hechenghouxianshi": true,
-      });
-    }
-    var imageUrl = e.detail.userInfo.avatarUrl;
-    imageUrl = imageUrl.split("/"); //把头像的路径切成数组
-
-    //把大小数值为 46 || 64 || 96 || 132 的转换为0
-    if (
-      imageUrl[imageUrl.length - 1] &&
-      (imageUrl[imageUrl.length - 1] == 46 ||
-        imageUrl[imageUrl.length - 1] == 64 ||
-        imageUrl[imageUrl.length - 1] == 96 ||
-        imageUrl[imageUrl.length - 1] == 132)
-    ) {
-      imageUrl[imageUrl.length - 1] = 0;
-    }
-
-    imageUrl = imageUrl.join("/"); //重新拼接为字符串
-
-    console.log("高清的头像", imageUrl);
-
-    wx.downloadFile({
-      url: imageUrl,
-      success(res) {
-        aaa = res.tempFilePath;
-        that.setData({
-          "userInfo.imageur": aaa,
+    wx.getUserProfile({
+      desc: '用户个人自愿获取',
+      success:res=>{
+        var imageUrl = res.userInfo.avatarUrl
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 100);
+        var aaa;
+        var that = this;
+        if (that.data.userInfo.hechenghouxianshi == false) {
+          that.setData({
+            "userInfo.hechenghouxianshi": true,
+          });
+        }
+        // var imageUrl = this.data.userInfo;
+        imageUrl = imageUrl.split("/"); //把头像的路径切成数组
+    
+        //把大小数值为 46 || 64 || 96 || 132 的转换为0
+        if (
+          imageUrl[imageUrl.length - 1] &&
+          (imageUrl[imageUrl.length - 1] == 46 ||
+            imageUrl[imageUrl.length - 1] == 64 ||
+            imageUrl[imageUrl.length - 1] == 96 ||
+            imageUrl[imageUrl.length - 1] == 132)
+        ) {
+          imageUrl[imageUrl.length - 1] = 0;
+        }
+    
+        imageUrl = imageUrl.join("/"); //重新拼接为字符串
+    
+        console.log("高清的头像", imageUrl);
+    
+        wx.downloadFile({
+          url: imageUrl,
+          success(res) {
+            aaa = res.tempFilePath;
+            that.setData({
+              "userInfo.imageur": aaa,
+            });
+          },
+          fail() {
+            consolge("获取头像失败啦！");
+          },
         });
-      },
-      fail() {
-        consolge("获取头像失败啦！");
-      },
-    });
+      }
+    })
   },
 
   //显示头像框状态的值

@@ -1,67 +1,71 @@
 <!--index.wxml-->
 
-  <view class="container">
+<view class="container">
 
-    <view class="about-banner">
-    <image wx:if='{{userInfo.hechenghouxianshi}}' src="{{userInfo.imageur}}"class="about-banner" ></image>
-    <image wx:else src="{{userInfo.scuecimage}}" class="about-banner" ></image>
-     </view>
+  <view class="about-banner">
+    <image wx:if='{{userInfo.hechenghouxianshi}}' src="{{userInfo.imageur}}" class="about-banner"></image>
+    <image wx:else src="{{userInfo.scuecimage}}" class="about-banner"></image>
+  </view>
   <view style="display:flex;top:30vh;">
     <button class="button1" bindtap="f2" hover-class="bg_color">上传头像</button>
-    <button class="button1" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"  hover-class="bg_color">获取微信头像</button>
+    <button class="button1" bindtap="getUserProfile"
+      hover-class="bg_color">获取微信头像</button>
 
 
-</view>
-<!--
+  </view>
+  <!--
 <view>
   <button bindtap="f4" type='primary'>开始制作校庆头像</button>
   </view>
   -->
-      <view wx:if="{{userInfo.xianshi1}}" class="hecheng" style="animation: slideup 0.25s ease-in alternate;">
-          <scroll-view class="box-sv" scroll-x="true"  style="width:100%;height:235rpx;">
-            
-            <image wx:for="{{list1}}" wx:key="item" lazy-load="true" src = "{{item.Path}}" style="width:190rpx;height:190rpx;margin:10rpx" catchtap="compose" data-id="{{item.Path}}"></image>
-         
-          </scroll-view>
-        </view> 
-          <view wx:elif="{{userInfo.xianshi2}}" class="hecheng" style="animation: slideup 0.25s ease-in alternate;">
-          <scroll-view class="box-sv" scroll-x="true"  style="width:100%;height:235rpx;">
-            
-            <image wx:for="{{list2}}" wx:key="item" lazy-load="true" src = "{{item.Path}}" style="width:190rpx;height:190rpx;margin:10rpx" catchtap="compose" data-id="{{item.Path}}"></image>
-         
-          </scroll-view>
-        </view> 
-          <view wx:elif="{{userInfo.xianshi3}}" class="hecheng" style="animation: slideup 0.25s ease-in alternate;">
-          <scroll-view class="box-sv" scroll-x="true"  style="width:100%;height:235rpx;">
-            
-            <image wx:for="{{list3}}" wx:key="item" lazy-load="true" src = "{{item.Path}}" style="width:190rpx;height:190rpx;margin:10rpx" catchtap="compose" data-id="{{item.Path}}"></image>
-         
-          </scroll-view>
-        </view> 
-             <!--
+  <view wx:if="{{userInfo.xianshi1}}" class="hecheng" style="animation: slideup 0.25s ease-in alternate;">
+    <scroll-view class="box-sv" scroll-x="true" style="width:100%;height:235rpx;">
+
+      <image wx:for="{{list1}}" wx:key="item" lazy-load="true" src="{{item.Path}}"
+        style="width:190rpx;height:190rpx;margin:10rpx" catchtap="compose" data-id="{{item.Path}}"></image>
+
+    </scroll-view>
+  </view>
+  <view wx:elif="{{userInfo.xianshi2}}" class="hecheng" style="animation: slideup 0.25s ease-in alternate;">
+    <scroll-view class="box-sv" scroll-x="true" style="width:100%;height:235rpx;">
+
+      <image wx:for="{{list2}}" wx:key="item" lazy-load="true" src="{{item.Path}}"
+        style="width:190rpx;height:190rpx;margin:10rpx" catchtap="compose" data-id="{{item.Path}}"></image>
+
+    </scroll-view>
+  </view>
+  <view wx:elif="{{userInfo.xianshi3}}" class="hecheng" style="animation: slideup 0.25s ease-in alternate;">
+    <scroll-view class="box-sv" scroll-x="true" style="width:100%;height:235rpx;">
+
+      <image wx:for="{{list3}}" wx:key="item" lazy-load="true" src="{{item.Path}}"
+        style="width:190rpx;height:190rpx;margin:10rpx" catchtap="compose" data-id="{{item.Path}}"></image>
+
+    </scroll-view>
+  </view>
+  <!--
             <button bindtap="f3" type='primary'>保存</button>
               <button bindtap="f5"  type='primary'>返回</button>
               -->
-           
-     
-              <view class="hidden-canvas">
-                <canvas canvas-id="ahaucanvas" style="width:840px;height:840px;" ></canvas>
-              </view>
-    
+
+
+  <view class="hidden-canvas">
+    <canvas canvas-id="ahaucanvas" style="width:840px;height:840px;"></canvas>
   </view>
-  <view class="dibu">
-    <view class="wenzi"  >
-    <text style="font-size:28rpx"  bindtap="f4">70周年限定</text>
-      </view>
-      <view class="wenzi" >
-    <text style="font-size:28rpx" bindtap="f6">民大生活</text>
-      </view>
-      <view class="wenzi" >
-    <text style="font-size:28rpx" bindtap="f5">民大建筑</text>
-      </view>
-      
-     
-      <button bindtap="f3" class="button2" disabled="{{userInfo. buttonjinyong}}">保存</button>
-     
-    </view>
-    <!--<canvas style="width: {{cw}}px; height: {{ch}}px;position: absolute; z-index: -1; left: -10000rpx;; top: -10000rpx;" canvas-id="firstCanvas"></canvas>-->
+
+</view>
+<view class="dibu">
+  <view class="wenzi">
+    <text class="tabbar" style="font-size:28rpx" bindtap="f4">70周年限定</text>
+  </view>
+  <view class="wenzi">
+    <text class="tabbar" style="font-size:28rpx" bindtap="f6">民大生活</text>
+  </view>
+  <view class="wenzi">
+    <text class="tabbar" style="font-size:28rpx" bindtap="f5">民大建筑</text>
+  </view>
+
+
+  <button bindtap="f3" class="button2" disabled="{{userInfo. buttonjinyong}}">保存</button>
+
+</view>
+<!--<canvas style="width: {{cw}}px; height: {{ch}}px;position: absolute; z-index: -1; left: -10000rpx;; top: -10000rpx;" canvas-id="firstCanvas"></canvas>-->
